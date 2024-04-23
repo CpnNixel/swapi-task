@@ -11,6 +11,7 @@ public class Person
     public string Height { get; set; }
     public string Mass { get; set; }
     public string SkinColor { get; set; }
+
     public Planet? HomeWorld { get; set; }
     public ICollection<PersonFilm> Films { get; set; } = [];
 }
@@ -20,8 +21,6 @@ public class PersonFilm
     public int Id { get; set; }
     public int PersonId { get; set; }
     public int FilmId { get; set; }
-    //public Person Person { get; set; }
-    //public Film Film { get; set; }
 }
 
 public class PersonPlanet
@@ -29,8 +28,6 @@ public class PersonPlanet
     public int Id { get; set; }
     public int PersonId { get; set; }
     public int PlanetId { get; set; }
-    //public Person Person { get; set; }
-    //public Planet Planet { get; set; }
 }
 
 public class Film
@@ -52,8 +49,6 @@ public class FilmPlanet
     public int Id { get; set; }
     public int FilmId { get; set; }
     public int PlanetId { get; set; }
-    //public Film Film { get; set; }
-    //public Planet Planet { get; set; }
 }
 
 public class FilmStarship
@@ -61,8 +56,6 @@ public class FilmStarship
     public int Id { get; set; }
     public int FilmId { get; set; }
     public int StarshipId { get; set; }
-    //public Film Film { get; set; }
-    //public Starship Starship { get; set; }
 }
 
 public record Planet

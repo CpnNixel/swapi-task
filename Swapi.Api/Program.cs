@@ -15,11 +15,9 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapGroup("Root").RootModule().WithTags("Root");
-
 app.MapGroup("Characters").CharactersModule().WithTags("Character");
-
 app.MapGroup("Films").FilmsModule().WithTags("Film");
-
+app.MapGroup("Planets").PlanetsModule().WithTags("Planet");
 app.MapGroup("Starships").StarshipsModule().WithTags("Starship");
 
 app.Run();
