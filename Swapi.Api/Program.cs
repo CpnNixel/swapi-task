@@ -15,6 +15,25 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapGet(
+    "/",
+    (HttpRequest request) =>
+    {
+        var baseUrl = $"{request.Scheme}://{request.Host}";
+
+        return Results.Ok(
+            new
+            {
+                films = $"{baseUrl}/api/films/",
+                people = $"{baseUrl}/api/people/",
+                planets = $"{baseUrl}/api/planets/",
+                species = $"{baseUrl}/api/species/",
+                starships = $"{baseUrl}/api/starships/",
+            }
+        );
+    }
+);
+
+app.MapGet(
     "/Character/{id}",
     async (StarWarsDbContext context, int id) =>
     {
