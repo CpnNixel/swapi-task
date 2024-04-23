@@ -4,6 +4,9 @@ using Swapi.Data;
 using Swapi.Services;
 using Swapi.Services.Interfaces;
 
+const string corsPolicyName = "ApiCorsPolicy";
+const string rateLimiterPolicyName = "TokenBucket";
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<StarWarsDbContext>();
@@ -14,7 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
     options.AddPolicy(
-        "ApiCorsPolicy",
+        corsPolicyName,
         policyBuilder =>
         {
             policyBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
@@ -25,7 +28,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddRateLimiter(options =>
 {
     options.AddTokenBucketLimiter(
-        "TokenBucket",
+        rateLimiterPolicyName,
         opt =>
         {
             opt.TokenLimit = 10_000;
@@ -37,14 +40,14 @@ builder.Services.AddRateLimiter(options =>
 
 var app = builder.Build();
 
-app.UseCors("ApiCorsPolicy");
+app.UseCors(corsPolicyName);
 app.UseRateLimiter();
 
 app.UseSwagger();
 app.UseSwaggerUI();
 
 #region Endpoints
-app.MapGroup("api/root").RootModule().WithName("Root").RequireRateLimiting("TokenBucket");
+app.MapGroup("api/root").RootModule().WithName("Root").RequireRateLimiting(rateLimiterPolicyName);
 
 app.MapGroup("api/characters").CharactersModule().WithTags("Character");
 app.MapGroup("api/Films").FilmsModule().WithTags("Film");
