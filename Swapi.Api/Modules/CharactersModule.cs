@@ -29,7 +29,7 @@ public static partial class Modules
                 "/search/{name}",
                 async (IPersonService personService, string name) =>
                 {
-                    var res = await personService.FindByName(name);
+                    var res = await personService.GetByName(name);
 
                     return !res.Any() ? Results.BadRequest() : Results.Ok(res);
                 }

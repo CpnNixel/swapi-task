@@ -6,10 +6,15 @@ namespace Swapi.Data;
 
 public class StarWarsDbContext : DbContext
 {
-    public DbSet<Person> People { get; set; }
-    public DbSet<Film> Films { get; set; }
-    public DbSet<Planet> Planets { get; set; }
-    public DbSet<Starship> Starships { get; set; }
+    public StarWarsDbContext(DbContextOptions options)
+        : base(options) { }
+
+    public StarWarsDbContext() { }
+
+    public virtual DbSet<Person> People { get; set; }
+    public virtual DbSet<Film> Films { get; set; }
+    public virtual DbSet<Planet> Planets { get; set; }
+    public virtual DbSet<Starship> Starships { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

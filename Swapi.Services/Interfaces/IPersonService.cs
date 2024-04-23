@@ -6,7 +6,7 @@ public interface IPersonService
 {
     Task<Person> GetById(int id);
 
-    Task<IEnumerable<Person>> FindByName(string name);
+    Task<IEnumerable<Person>> GetByName(string name);
 
     Task UpdatePerson(int id, Person person);
 

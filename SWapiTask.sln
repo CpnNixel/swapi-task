@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swapi.Data", "Swapi.Data\Sw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swapi.Services", "Swapi.Services\Swapi.Services.csproj", "{580B1F9E-D12F-4B1D-84D1-AE84BC93B93D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWapi.Tests", "SWapi.Tests\SWapi.Tests.csproj", "{B4E1078A-CBBA-42BF-A21A-4480A9E42B54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{580B1F9E-D12F-4B1D-84D1-AE84BC93B93D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{580B1F9E-D12F-4B1D-84D1-AE84BC93B93D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{580B1F9E-D12F-4B1D-84D1-AE84BC93B93D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4E1078A-CBBA-42BF-A21A-4480A9E42B54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4E1078A-CBBA-42BF-A21A-4480A9E42B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4E1078A-CBBA-42BF-A21A-4480A9E42B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4E1078A-CBBA-42BF-A21A-4480A9E42B54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

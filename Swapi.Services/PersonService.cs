@@ -12,7 +12,7 @@ public class PersonService(StarWarsDbContext context) : IPersonService
         return await context.People.Include(p => p.Films).FirstOrDefaultAsync(p => p.Id == id);
     }
 
-    public async Task<IEnumerable<Person>> FindByName(string name)
+    public async Task<IEnumerable<Person>> GetByName(string name)
     {
         return await context
             .People.Include(p => p.Films)
