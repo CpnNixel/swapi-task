@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Swapi.Data.Migrations
+namespace SWapi.Data.Migrations
 {
     /// <inheritdoc />
     public partial class Init : Migration

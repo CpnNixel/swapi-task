@@ -2,25 +2,22 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Swapi.Data;
+using SWapi.Data;
 
 #nullable disable
 
-namespace Swapi.Data.Migrations
+namespace SWapi.Data.Migrations
 {
     [DbContext(typeof(StarWarsDbContext))]
-    [Migration("20240422234555_AddedSeedData")]
-    partial class AddedSeedData
+    partial class StarWarsDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
 
-            modelBuilder.Entity("Swapi.Data.Film", b =>
+            modelBuilder.Entity("SWapi.Data.Film", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -76,7 +73,7 @@ namespace Swapi.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Swapi.Data.FilmPlanet", b =>
+            modelBuilder.Entity("SWapi.Data.FilmPlanet", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -111,7 +108,7 @@ namespace Swapi.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Swapi.Data.FilmStarship", b =>
+            modelBuilder.Entity("SWapi.Data.FilmStarship", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -146,7 +143,7 @@ namespace Swapi.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Swapi.Data.Person", b =>
+            modelBuilder.Entity("SWapi.Data.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -220,7 +217,7 @@ namespace Swapi.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Swapi.Data.PersonFilm", b =>
+            modelBuilder.Entity("SWapi.Data.PersonFilm", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -261,7 +258,7 @@ namespace Swapi.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Swapi.Data.PersonPlanet", b =>
+            modelBuilder.Entity("SWapi.Data.PersonPlanet", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -294,7 +291,7 @@ namespace Swapi.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Swapi.Data.Planet", b =>
+            modelBuilder.Entity("SWapi.Data.Planet", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -369,7 +366,7 @@ namespace Swapi.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Swapi.Data.Starship", b =>
+            modelBuilder.Entity("SWapi.Data.Starship", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -468,70 +465,70 @@ namespace Swapi.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Swapi.Data.FilmPlanet", b =>
+            modelBuilder.Entity("SWapi.Data.FilmPlanet", b =>
                 {
-                    b.HasOne("Swapi.Data.Film", null)
+                    b.HasOne("SWapi.Data.Film", null)
                         .WithMany("Planets")
                         .HasForeignKey("FilmId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Swapi.Data.Planet", null)
+                    b.HasOne("SWapi.Data.Planet", null)
                         .WithMany("Films")
                         .HasForeignKey("PlanetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Swapi.Data.FilmStarship", b =>
+            modelBuilder.Entity("SWapi.Data.FilmStarship", b =>
                 {
-                    b.HasOne("Swapi.Data.Film", null)
+                    b.HasOne("SWapi.Data.Film", null)
                         .WithMany("Starships")
                         .HasForeignKey("FilmId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Swapi.Data.Starship", null)
+                    b.HasOne("SWapi.Data.Starship", null)
                         .WithMany("Films")
                         .HasForeignKey("StarshipId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Swapi.Data.Person", b =>
+            modelBuilder.Entity("SWapi.Data.Person", b =>
                 {
-                    b.HasOne("Swapi.Data.Planet", "HomeWorld")
+                    b.HasOne("SWapi.Data.Planet", "HomeWorld")
                         .WithMany()
                         .HasForeignKey("HomeWorldId");
 
                     b.Navigation("HomeWorld");
                 });
 
-            modelBuilder.Entity("Swapi.Data.PersonFilm", b =>
+            modelBuilder.Entity("SWapi.Data.PersonFilm", b =>
                 {
-                    b.HasOne("Swapi.Data.Film", null)
+                    b.HasOne("SWapi.Data.Film", null)
                         .WithMany("Persons")
                         .HasForeignKey("FilmId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Swapi.Data.Person", null)
+                    b.HasOne("SWapi.Data.Person", null)
                         .WithMany("Films")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Swapi.Data.PersonPlanet", b =>
+            modelBuilder.Entity("SWapi.Data.PersonPlanet", b =>
                 {
-                    b.HasOne("Swapi.Data.Planet", null)
+                    b.HasOne("SWapi.Data.Planet", null)
                         .WithMany("People")
                         .HasForeignKey("PlanetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Swapi.Data.Film", b =>
+            modelBuilder.Entity("SWapi.Data.Film", b =>
                 {
                     b.Navigation("Persons");
 
@@ -540,19 +537,19 @@ namespace Swapi.Data.Migrations
                     b.Navigation("Starships");
                 });
 
-            modelBuilder.Entity("Swapi.Data.Person", b =>
+            modelBuilder.Entity("SWapi.Data.Person", b =>
                 {
                     b.Navigation("Films");
                 });
 
-            modelBuilder.Entity("Swapi.Data.Planet", b =>
+            modelBuilder.Entity("SWapi.Data.Planet", b =>
                 {
                     b.Navigation("Films");
 
                     b.Navigation("People");
                 });
 
-            modelBuilder.Entity("Swapi.Data.Starship", b =>
+            modelBuilder.Entity("SWapi.Data.Starship", b =>
                 {
                     b.Navigation("Films");
                 });

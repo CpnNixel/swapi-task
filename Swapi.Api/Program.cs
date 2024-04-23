@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.RateLimiting;
-using Swapi.Api.Modules;
-using Swapi.Data;
-using Swapi.Services;
-using Swapi.Services.Interfaces;
+using SWapi.Api.Modules;
+using SWapi.Data;
+using SWapi.Services;
+using SWapi.Services.Interfaces;
 
 const string corsPolicyName = "ApiCorsPolicy";
 const string rateLimiterPolicyName = "TokenBucket";

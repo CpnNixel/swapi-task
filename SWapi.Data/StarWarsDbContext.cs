@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using Swapi.Data.Models;
-using Swapi.Data.SeedData;
+using SWapi.Data.Models;
+using SWapi.Data.SeedData;
 
-namespace Swapi.Data;
+namespace SWapi.Data;
 
 public class StarWarsDbContext : DbContext
 {

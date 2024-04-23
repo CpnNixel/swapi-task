@@ -1,4 +1,4 @@
-namespace Swapi.Api.Modules;
+namespace SWapi.Api.Modules;
 
 public static partial class Modules
 {

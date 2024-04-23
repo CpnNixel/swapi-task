@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Http.HttpResults;
-using Swapi.Data.Models;
-using Swapi.Services.Interfaces;
+using SWapi.Data.Models;
+using SWapi.Services.Interfaces;
 
-namespace Swapi.Api.Modules;
+namespace SWapi.Api.Modules;
 
 public static partial class Modules
 {
@@ -31,7 +31,7 @@ public static partial class Modules
                 {
                     var res = await personService.GetByName(name);
 
-                    return !res.Any() ? Results.BadRequest() : Results.Ok(res);
+                    return !res.Any() ? Results.NotFound() : Results.Ok(res);
                 }
             )
             .Produces<Ok<IEnumerable<Person>>>()

@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
-using Swapi.Data;
-using Swapi.Data.Models;
+using SWapi.Data;
+using SWapi.Data.Models;
 
-namespace Swapi.Api.Modules;
+namespace SWapi.Api.Modules;
 
 public static partial class Modules
 {

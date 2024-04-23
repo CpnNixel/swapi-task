@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swapi.Api", "Swapi.Api\Swapi.Api.csproj", "{B8C8719F-86F7-44EE-B8AD-2626D42EA1C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWapi.Api", "SWapi.Api\SWapi.Api.csproj", "{B8C8719F-86F7-44EE-B8AD-2626D42EA1C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swapi.Data", "Swapi.Data\Swapi.Data.csproj", "{292A3546-A06E-4D54-978D-B44F9679F189}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWapi.Data", "SWapi.Data\SWapi.Data.csproj", "{292A3546-A06E-4D54-978D-B44F9679F189}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swapi.Services", "Swapi.Services\Swapi.Services.csproj", "{580B1F9E-D12F-4B1D-84D1-AE84BC93B93D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWapi.Services", "SWapi.Services\SWapi.Services.csproj", "{580B1F9E-D12F-4B1D-84D1-AE84BC93B93D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWapi.Tests", "SWapi.Tests\SWapi.Tests.csproj", "{B4E1078A-CBBA-42BF-A21A-4480A9E42B54}"
 EndProject

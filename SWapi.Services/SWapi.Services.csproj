@@ -4,10 +4,11 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>SWapi.Services</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Swapi.Data\Swapi.Data.csproj" />
+      <ProjectReference Include="..\SWapi.Data\SWapi.Data.csproj" />
     </ItemGroup>
 
 </Project>

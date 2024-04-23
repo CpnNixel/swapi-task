@@ -1,9 +1,9 @@
 using MockQueryable.Moq;
 using Moq;
-using Swapi.Data;
-using Swapi.Data.Models;
-using Swapi.Services;
-using Swapi.Services.Interfaces;
+using SWapi.Data;
+using SWapi.Data.Models;
+using SWapi.Services;
+using SWapi.Services.Interfaces;
 
 namespace SWapi.Tests;
 

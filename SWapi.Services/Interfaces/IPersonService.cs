@@ -1,6 +1,6 @@
-using Swapi.Data.Models;
+using SWapi.Data.Models;
 
-namespace Swapi.Services.Interfaces;
+namespace SWapi.Services.Interfaces;
 
 public interface IPersonService
 {

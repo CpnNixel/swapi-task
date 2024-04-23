@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace Swapi.Data.Migrations
+namespace SWapi.Data.Migrations
 {
     /// <inheritdoc />
     public partial class AddedSeedData : Migration

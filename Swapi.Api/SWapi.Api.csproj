@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
+    <RootNamespace>SWapi.Api</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Swapi.Data\Swapi.Data.csproj" />
-    <ProjectReference Include="..\Swapi.Services\Swapi.Services.csproj" />
+    <ProjectReference Include="..\SWapi.Data\SWapi.Data.csproj" />
+    <ProjectReference Include="..\SWapi.Services\SWapi.Services.csproj" />
   </ItemGroup>
 
 </Project>

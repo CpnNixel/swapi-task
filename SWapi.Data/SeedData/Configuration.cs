@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Swapi.Data.Models;
+using SWapi.Data.Models;
 
-namespace Swapi.Data.SeedData;
+namespace SWapi.Data.SeedData;
 
 public class PersonConfiguration : IEntityTypeConfiguration<Person>
 {

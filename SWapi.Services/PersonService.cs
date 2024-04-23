@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Swapi.Data;
-using Swapi.Data.Models;
-using Swapi.Services.Interfaces;
+using SWapi.Data;
+using SWapi.Data.Models;
+using SWapi.Services.Interfaces;
 
-namespace Swapi.Services;
+namespace SWapi.Services;
 
 public class PersonService(StarWarsDbContext context) : IPersonService
 {
@@ -23,11 +23,12 @@ public class PersonService(StarWarsDbContext context) : IPersonService
 
     public async Task UpdatePerson(int id, Person person)
     {
-        var existingPerson = await context.People.FindAsync(id)
-                             /*_logger.Log*/ /*NotFoundException*/
-                             ?? throw new InvalidOperationException($"Person with ID {id} not found.");
-    
-        
+        var existingPerson =
+            await context.People.FindAsync(id)
+            /*_logger.Log*/
+            /*NotFoundException*/
+            ?? throw new InvalidOperationException($"Person with ID {id} not found.");
+
         existingPerson.Name = person.Name;
         existingPerson.BirthYear = person.BirthYear;
         existingPerson.EyeColor = person.EyeColor;
@@ -37,7 +38,7 @@ public class PersonService(StarWarsDbContext context) : IPersonService
         existingPerson.Mass = person.Mass;
         existingPerson.SkinColor = person.SkinColor;
         existingPerson.HomeWorld = person.HomeWorld;
-        
+
         await context.SaveChangesAsync();
     }
 
