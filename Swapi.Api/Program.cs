@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.RateLimiting;
 using Swapi.Api.Modules;
 using Swapi.Data;
+using Swapi.Services;
+using Swapi.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<StarWarsDbContext>();
 builder.Services.AddHttpClient();
 
+builder.Services.AddScoped<IPersonService, PersonService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
@@ -41,12 +44,12 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 #region Endpoints
-app.MapGroup("Root").RootModule().WithName("Root").RequireRateLimiting("TokenBucket");
+app.MapGroup("api/root").RootModule().WithName("Root").RequireRateLimiting("TokenBucket");
 
-app.MapGroup("Characters").CharactersModule().WithTags("Character");
-app.MapGroup("Films").FilmsModule().WithTags("Film");
-app.MapGroup("Planets").PlanetsModule().WithTags("Planet");
-app.MapGroup("Starships").StarshipsModule().WithTags("Starship");
+app.MapGroup("api/characters").CharactersModule().WithTags("Character");
+app.MapGroup("api/Films").FilmsModule().WithTags("Film");
+app.MapGroup("api/planets").PlanetsModule().WithTags("Planet");
+app.MapGroup("api/Starships").StarshipsModule().WithTags("Starship");
 #endregion
 
 app.Run();

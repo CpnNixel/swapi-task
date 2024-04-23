@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Swapi.Data.Models;
 using Swapi.Data.SeedData;
 
 namespace Swapi.Data;

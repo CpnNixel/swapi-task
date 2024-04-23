@@ -1,42 +1,84 @@
 using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.EntityFrameworkCore;
-using Swapi.Data;
+using Swapi.Data.Models;
+using Swapi.Services.Interfaces;
 
 namespace Swapi.Api.Modules;
 
 public static partial class Modules
-{    
+{
     // Search Fields:
     //
     // name
-    
+
     public static RouteGroupBuilder CharactersModule(this RouteGroupBuilder group)
     {
-        group.MapGet(
-            "/{id}",
-            async (StarWarsDbContext context, int id) =>
-            {
-                return await context
-                    .People.Include(p => p.Films)
-                    .FirstOrDefaultAsync(p => p.Id == id);
-            }
-        );
+        group
+            .MapGet(
+                "/{id}",
+                async (IPersonService personService, int id) =>
+                {
+                    var res = await personService.GetById(id);
+                    return res is null ? Results.NotFound() : Results.Ok(res);
+                }
+            )
+            .Produces<Ok<Person>>()
+            .Produces(StatusCodes.Status404NotFound);
 
-        group.MapGet(
-            "/search/{name}",
-            Results<Ok<IEnumerable<Person>>, NotFound> (StarWarsDbContext context, string name) =>
-            {
-                var res = context
-                    .People.Include(p => p.Films)
-                    .Where(f => f.Name.ToLower().Contains(name.ToLower()))
-                    .AsNoTracking()
-                    .ToList();
+        group
+            .MapGet(
+                "/search/{name}",
+                async (IPersonService personService, string name) =>
+                {
+                    var res = await personService.FindByName(name);
 
-                return !res.Any()
-                    ? TypedResults.NotFound()
-                    : TypedResults.Ok<IEnumerable<Person>>(res);
-            }
-        );
+                    return !res.Any() ? Results.BadRequest() : Results.Ok(res);
+                }
+            )
+            .Produces<Ok<IEnumerable<Person>>>()
+            .Produces(StatusCodes.Status404NotFound);
+
+        group
+            .MapPut(
+                "/{id}",
+                async (IPersonService personService, int id, Person person) =>
+                {
+                    try
+                    {
+                        await personService.UpdatePerson(id, person);
+                    }
+                    catch (Exception ex)
+                    {
+                        //_logger.log(exception)
+                        return Results.BadRequest(ex.Message);
+                    }
+
+                    return Results.NoContent();
+                }
+            )
+            .Produces(StatusCodes.Status204NoContent)
+            .Produces(StatusCodes.Status400BadRequest);
+
+        group
+            .MapPost(
+                "/person",
+                async (IPersonService personService, Person person) =>
+                {
+                    try
+                    {
+                        var createdPerson = await personService.CreatePerson(person);
+
+                        return Results.Created($"/api/person/{createdPerson.Id}", createdPerson);
+                    }
+                    catch (Exception ex)
+                    {
+                        //_logger.log(exception)
+                        return Results.BadRequest(ex.Message);
+                    }
+                }
+            )
+            .Produces(StatusCodes.Status201Created)
+            .Produces(StatusCodes.Status400BadRequest);
+
         return group;
     }
 }

@@ -1,6 +1,8 @@
+using System.Collections;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Swapi.Data;
+using Swapi.Data.Models;
 
 namespace Swapi.Api.Modules;
 
@@ -13,27 +15,27 @@ public static partial class Modules
 
     public static RouteGroupBuilder StarshipsModule(this RouteGroupBuilder group)
     {
-        group.MapGet(
-            "/search/{nameOrModel}",
-            Results<Ok<IEnumerable<Starship>>, NotFound> (
-                StarWarsDbContext context,
-                string nameOrModel
-            ) =>
-            {
-                var res = context
-                    .Starships.Include(f => f.Films)
-                    .Where(starship =>
-                        starship.Name.ToLower().Contains(nameOrModel.ToLower())
-                        || starship.Name.ToLower().Contains(nameOrModel.ToLower())
-                    )
-                    .AsNoTracking()
-                    .ToList();
+        group
+            .MapGet(
+                "/search/{nameOrModel}",
+                async (StarWarsDbContext context, string nameOrModel) =>
+                {
+                    //Todo: move to services
 
-                return !res.Any()
-                    ? TypedResults.NotFound()
-                    : TypedResults.Ok<IEnumerable<Starship>>(res);
-            }
-        );
+                    var res = await context
+                        .Starships.Include(f => f.Films)
+                        .Where(starship =>
+                            starship.Name.ToLower().Contains(nameOrModel.ToLower())
+                            || starship.Name.ToLower().Contains(nameOrModel.ToLower())
+                        )
+                        .AsNoTracking()
+                        .ToListAsync();
+
+                    return !res.Any() ? Results.NotFound() : Results.Ok<IEnumerable<Starship>>(res);
+                }
+            )
+            .Produces<Ok<IEnumerable<Starship>>>()
+            .Produces(StatusCodes.Status404NotFound);
 
         return group;
     }
