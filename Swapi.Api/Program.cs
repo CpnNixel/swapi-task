@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+using Swapi.Api.Modules;
 using Swapi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,31 +14,12 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.MapGet(
-    "/",
-    (HttpRequest request) =>
-    {
-        var baseUrl = $"{request.Scheme}://{request.Host}";
+app.MapGroup("Root").RootModule().WithTags("Root");
 
-        return Results.Ok(
-            new
-            {
-                films = $"{baseUrl}/api/films/",
-                people = $"{baseUrl}/api/people/",
-                planets = $"{baseUrl}/api/planets/",
-                species = $"{baseUrl}/api/species/",
-                starships = $"{baseUrl}/api/starships/",
-            }
-        );
-    }
-);
+app.MapGroup("Characters").CharactersModule().WithTags("Character");
 
-app.MapGet(
-    "/Character/{id}",
-    async (StarWarsDbContext context, int id) =>
-    {
-        return await context.People.Include(p => p.Films).FirstOrDefaultAsync(p => p.Id == id);
-    }
-);
+app.MapGroup("Films").FilmsModule().WithTags("Film");
+
+app.MapGroup("Starships").StarshipsModule().WithTags("Starship");
 
 app.Run();
