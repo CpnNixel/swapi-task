@@ -52,8 +52,8 @@ app.MapGroup("api/root")
     .RequireRateLimiting(rateLimiterPolicyName);
 
 app.MapGroup("api/characters").CharactersModule().WithTags("Character");
-app.MapGroup("api/Films").FilmsModule().WithTags("Film");
+app.MapGroup("api/films").FilmsModule().WithTags("Film");
 app.MapGroup("api/planets").PlanetsModule().WithTags("Planet");
-app.MapGroup("api/Starships").StarshipsModule().WithTags("Starship");
+app.MapGroup("api/starships").StarshipsModule().WithTags("Starship");
 
 app.Run();
