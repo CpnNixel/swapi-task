@@ -36,15 +36,17 @@ var app = builder.Build();
 
 app.UseCors("ApiCorsPolicy");
 app.UseRateLimiter();
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.MapGroup("Root").RootModule().WithName("Root")
-    .RequireRateLimiting("TokenBucket");
+#region Endpoints
+app.MapGroup("Root").RootModule().WithName("Root").RequireRateLimiting("TokenBucket");
 
 app.MapGroup("Characters").CharactersModule().WithTags("Character");
 app.MapGroup("Films").FilmsModule().WithTags("Film");
 app.MapGroup("Planets").PlanetsModule().WithTags("Planet");
 app.MapGroup("Starships").StarshipsModule().WithTags("Starship");
+#endregion
 
 app.Run();
