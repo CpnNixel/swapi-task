@@ -5,7 +5,11 @@ using Swapi.Data;
 namespace Swapi.Api.Modules;
 
 public static partial class Modules
-{
+{    
+    // Search Fields:
+    //
+    // name
+    
     public static RouteGroupBuilder CharactersModule(this RouteGroupBuilder group)
     {
         group.MapGet(

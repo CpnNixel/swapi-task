@@ -6,7 +6,7 @@ namespace Swapi.Api.Modules;
 
 public static partial class Modules
 {
-    //Search Fields:
+    // Search Fields:
     //
     // name
 

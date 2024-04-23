@@ -6,6 +6,9 @@ namespace Swapi.Api.Modules;
 
 public static partial class Modules
 {
+    // Search Fields:
+    //
+    // title
     public static RouteGroupBuilder FilmsModule(this RouteGroupBuilder group)
     {
         group.MapGet(
